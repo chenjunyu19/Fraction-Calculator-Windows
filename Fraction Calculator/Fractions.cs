@@ -9,32 +9,46 @@ namespace Fraction_Calculator
   {
     public struct Fraction
     {
-      public int Numerator;
-      public int Denominator;
+      public decimal Numerator;
+      public decimal Denominator;
     }
 
-    public static int GetMaxCommonFactor(int i1, int i2)
+    /// <summary>
+    /// 取两个数的最大公因数
+    /// </summary>
+    /// <param name="n1">数1</param>
+    /// <param name="n2">数2</param>
+    public static decimal GetMaxCommonFactor(decimal n1, decimal n2)
     {
-      int tmp;
-      while (i2 != 0)
+      decimal tmp;
+      while (n2 != 0)
       {
-        tmp = i1 % i2;
-        i1 = i2;
-        i2 = tmp;
+        tmp = n1 % n2;
+        n1 = n2;
+        n2 = tmp;
       }
-      return i1;
+      return n1;
     }
 
-    public static int GetMinCommonMultiple(int i1, int i2)
+    /// <summary>
+    /// 取两个数的最小公倍数
+    /// </summary>
+    /// <param name="n1">数1</param>
+    /// <param name="n2">数2</param>
+    public static decimal GetMinCommonMultiple(decimal n1, decimal n2)
     {
-      int tmp = i1;
-      while (tmp % i2 != 0)
+      decimal tmp = n1;
+      while (tmp % n2 != 0)
       {
-        tmp += i1;
+        tmp += n1;
       }
       return tmp;
     }
 
+    /// <summary>
+    /// 检查一个分数是否有意义
+    /// </summary>
+    /// <param name="f">要检查的分数</param>
     public static bool isMeaningful(Fraction f)
     {
       if (f.Denominator != 0)
@@ -47,6 +61,10 @@ namespace Fraction_Calculator
       }
     }
 
+    /// <summary>
+    /// 将分母的负号移到分子
+    /// </summary>
+    /// <param name="f">要操作的分数</param>
     public static Fraction MoveMinusToNumerator(Fraction f)
     {
       if (f.Numerator != 0 && f.Denominator < 0)
@@ -57,18 +75,27 @@ namespace Fraction_Calculator
       return f;
     }
 
+    /// <summary>
+    /// 对一个分数进行约分
+    /// </summary>
+    /// <param name="f">要约分的分数</param>
     public static Fraction ReductionofAFraction(Fraction f)
     {
       if (isMeaningful(f))
       {
         f = MoveMinusToNumerator(f);
-        int MaxCommonFactor = GetMaxCommonFactor(Math.Abs(f.Numerator), Math.Abs(f.Denominator));
+        decimal MaxCommonFactor = GetMaxCommonFactor(Math.Abs(f.Numerator), Math.Abs(f.Denominator));
         f.Numerator /= MaxCommonFactor;
         f.Denominator /= MaxCommonFactor;
       }
       return f;
     }
 
+    /// <summary>
+    /// 对两个分数进行通分
+    /// </summary>
+    /// <param name="f1">分数1</param>
+    /// <param name="f2">分数2</param>
     public static Fraction[] ReductionofFractionstoACommonDenominator(Fraction f1, Fraction f2)
     {
       Fraction[] f = new Fraction[2];
@@ -82,7 +109,7 @@ namespace Fraction_Calculator
       f2 = ReductionofAFraction(f2);
       f[0].Numerator = f1.Numerator;
       f[1].Numerator = f2.Numerator;
-      int MinCommonMultiple = GetMinCommonMultiple(Math.Abs(f1.Denominator), Math.Abs(f2.Denominator));
+      decimal MinCommonMultiple = GetMinCommonMultiple(Math.Abs(f1.Denominator), Math.Abs(f2.Denominator));
       f[0].Denominator = MinCommonMultiple;
       f[1].Denominator = MinCommonMultiple;
       f[0].Numerator = f[0].Numerator * MinCommonMultiple / f1.Denominator;
@@ -92,6 +119,11 @@ namespace Fraction_Calculator
       return f;
     }
 
+    /// <summary>
+    /// 将两个分数相加
+    /// </summary>
+    /// <param name="f1">分数1</param>
+    /// <param name="f2">分数2</param>
     public static Fraction Addition(Fraction f1, Fraction f2)
     {
       if (!isMeaningful(f1) && !isMeaningful(f2))
@@ -105,6 +137,11 @@ namespace Fraction_Calculator
       return f;
     }
 
+    /// <summary>
+    /// 将两个分数相减
+    /// </summary>
+    /// <param name="f1">分数1</param>
+    /// <param name="f2">分数2</param>
     public static Fraction Subaddition(Fraction f1, Fraction f2)
     {
       if (!isMeaningful(f1) && !isMeaningful(f2))
@@ -118,6 +155,11 @@ namespace Fraction_Calculator
       return f;
     }
 
+    /// <summary>
+    /// 将两个分数相乘
+    /// </summary>
+    /// <param name="f1">分数1</param>
+    /// <param name="f2">分数2</param>
     public static Fraction Multiplication(Fraction f1, Fraction f2)
     {
       Fraction f;
@@ -127,6 +169,11 @@ namespace Fraction_Calculator
       return f;
     }
 
+    /// <summary>
+    /// 将两个分数相除
+    /// </summary>
+    /// <param name="f1">分数1</param>
+    /// <param name="f2">分数2</param>
     public static Fraction Division(Fraction f1, Fraction f2)
     {
       Fraction f;

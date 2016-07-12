@@ -16,6 +16,9 @@ namespace Fraction_Calculator
       InitializeComponent();
     }
 
+    /// <summary>
+    /// 检查分子分母框是否都填写并自动补充空分母框为1
+    /// </summary>
     private bool CheckTextBox()
     {
       if (TextBox2.Text == "")
@@ -42,10 +45,10 @@ namespace Fraction_Calculator
       {
         Fractions.Fraction[] fs = new Fractions.Fraction[2];
         Fractions.Fraction f;
-        fs[0].Numerator = int.Parse(TextBox1.Text);
-        fs[0].Denominator = int.Parse(TextBox2.Text);
-        fs[1].Numerator = int.Parse(TextBox3.Text);
-        fs[1].Denominator = int.Parse(TextBox4.Text);
+        fs[0].Numerator = decimal.Parse(TextBox1.Text);
+        fs[0].Denominator = decimal.Parse(TextBox2.Text);
+        fs[1].Numerator = decimal.Parse(TextBox3.Text);
+        fs[1].Denominator = decimal.Parse(TextBox4.Text);
         f = Fractions.Addition(fs[0], fs[1]);
         TextBox5.Text = Convert.ToString(f.Numerator);
         TextBox6.Text = Convert.ToString(f.Denominator);
@@ -58,10 +61,10 @@ namespace Fraction_Calculator
       {
         Fractions.Fraction[] fs = new Fractions.Fraction[2];
         Fractions.Fraction f;
-        fs[0].Numerator = int.Parse(TextBox1.Text);
-        fs[0].Denominator = int.Parse(TextBox2.Text);
-        fs[1].Numerator = int.Parse(TextBox3.Text);
-        fs[1].Denominator = int.Parse(TextBox4.Text);
+        fs[0].Numerator = decimal.Parse(TextBox1.Text);
+        fs[0].Denominator = decimal.Parse(TextBox2.Text);
+        fs[1].Numerator = decimal.Parse(TextBox3.Text);
+        fs[1].Denominator = decimal.Parse(TextBox4.Text);
         f = Fractions.Subaddition(fs[0], fs[1]);
         TextBox5.Text = Convert.ToString(f.Numerator);
         TextBox6.Text = Convert.ToString(f.Denominator);
@@ -73,10 +76,10 @@ namespace Fraction_Calculator
       if (CheckTextBox())
       {
         Fractions.Fraction[] f = new Fractions.Fraction[3];
-        f[0].Numerator = int.Parse(TextBox1.Text);
-        f[0].Denominator = int.Parse(TextBox2.Text);
-        f[1].Numerator = int.Parse(TextBox3.Text);
-        f[1].Denominator = int.Parse(TextBox4.Text);
+        f[0].Numerator = decimal.Parse(TextBox1.Text);
+        f[0].Denominator = decimal.Parse(TextBox2.Text);
+        f[1].Numerator = decimal.Parse(TextBox3.Text);
+        f[1].Denominator = decimal.Parse(TextBox4.Text);
         f[2] = Fractions.Multiplication(f[0], f[1]);
         TextBox5.Text = Convert.ToString(f[2].Numerator);
         TextBox6.Text = Convert.ToString(f[2].Denominator);
@@ -88,10 +91,10 @@ namespace Fraction_Calculator
       if (CheckTextBox())
       {
         Fractions.Fraction[] f = new Fractions.Fraction[3];
-        f[0].Numerator = int.Parse(TextBox1.Text);
-        f[0].Denominator = int.Parse(TextBox2.Text);
-        f[1].Numerator = int.Parse(TextBox3.Text);
-        f[1].Denominator = int.Parse(TextBox4.Text);
+        f[0].Numerator = decimal.Parse(TextBox1.Text);
+        f[0].Denominator = decimal.Parse(TextBox2.Text);
+        f[1].Numerator = decimal.Parse(TextBox3.Text);
+        f[1].Denominator = decimal.Parse(TextBox4.Text);
         f[2] = Fractions.Division(f[0], f[1]);
         TextBox5.Text = Convert.ToString(f[2].Numerator);
         TextBox6.Text = Convert.ToString(f[2].Denominator);
